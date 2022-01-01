@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ml-auto">
+        <li><a class="nav-link" href="{%  url 'home' %}">Home</a></li>
+        <li><a class="nav-link" href="{%  url 'about' %}">About</a></li>
+        <li><a class="nav-link" href="{%  url 'carta' %}">Carta</a></li>
+        <li><a class="nav-link" href="{%  url 'ofertas' %}">Ofertas</a></li>
+        <li><a class="nav-link" href="{%  url 'vegetal' %}">Vegetal</a></li>
+        <li><a class="nav-link" href="{%  url 'carrito' %}">Carrito</a></li>
+    </ul>
+</div></br></br></br></br>
+
+{% block content %} {% endblock %}
+
+<div class="footer">
+  <p class="footerp">
+      <a href="#1">PREGUNTAS FRECUENTES</a>
+      <a href="#1">OPINIONES Y SUGERENCIAS</a>
+      <a href="#1">INFORMACION LEGAL</a>
+      <a href="#1">POLITICAS DE PRIVACIDAD</a>
+      <a href="#1">CONFIGURACIÓN DE COOKIES</a>
+  </p>
+</div>
+</body>
+
+<style>
+  body {margin:0;}
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  li {
+    float: left;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  li a:hover:not(.active) {
+    background-color: #111;
+  }
+  .active {
+    background-color: #04AA6D;
+  }
+  .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #5a3636;
+   color: white;
+   text-align: center;
+}
+</style>
+</html>

@@ -15,7 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from selfservice import views as selfservice_views
+from kitchen import views as kitchen_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', selfservice_views.home, name="home"),
+    path('about/', selfservice_views.about, name="about"),
+    path('carta/', selfservice_views.carta, name="carta"),
+    path('ofertas/', selfservice_views.ofertas, name="ofertas"),
+    path('vegetal/', selfservice_views.vegetal, name="vegetal"),
+    path('carrito/', selfservice_views.carrito, name="carrito"),
+    path('login/', kitchen_views.login, name="login"),
+    path('listado/', kitchen_views.listado, name="listado"),
 ]
