@@ -1,0 +1,83 @@
+.baseli {
+     margin: 5px;
+     width: 180px;
+     float: left;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  li a:hover:not(.active) {
+    background-color: #111;
+  }
+  .active {
+    background-color: #04AA6D;
+  }
+.footer {
+     position: fixed;;
+     left: 0;
+     bottom: 0;
+     width: 100%;
+     background-color: #5a3636;
+     color: white;
+     text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.cartadiv {
+     margin-left: 250px;
+     margin-right: 250px;
+}
+
+.cartap {
+     margin-right: 250px;
+     font-size: xx-large;
+     font-family: cursive;
+}
+
+.carta {
+     margin: 5px;
+     border: 1px solid #ccc;
+     float: left;
+     width: 180px;
+     font-family: cursive;
+     font-size: small;
+}
+
+.cartaitem{
+     width: 100%;
+     height: auto;
+}
+
+.cartatext {
+     padding: 15px;
+     text-align: center;
+}

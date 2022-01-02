@@ -1,18 +1,23 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'selfservice/styles.css' %}">
 </head>
 <body>
 <div class="collapse navbar-collapse" id="navbarResponsive">
-    <ul class="navbar-nav ml-auto">
-        <li><a class="nav-link" href="{%  url 'home' %}">Home</a></li>
-        <li><a class="nav-link" href="{%  url 'about' %}">About</a></li>
-        <li><a class="nav-link" href="{%  url 'carta' %}">Carta</a></li>
-        <li><a class="nav-link" href="{%  url 'ofertas' %}">Ofertas</a></li>
-        <li><a class="nav-link" href="{%  url 'vegetal' %}">Vegetal</a></li>
-        <li><a class="nav-link" href="{%  url 'carrito' %}">Carrito</a></li>
+    <ul class="navbar-nav ml-auto" style="background-color: #f5ebdc; font-size: large; font-family: cursive;">
+        <li class="baseli"><a style="color: black" class="nav-link" href="{%  url 'home' %}"><b>Logo</b></a></li>
+        <li class="baseli"><a style="color: black" class="nav-link" href="{%  url 'home' %}"><b>Inicio</b></a></li>
+        <li class="baseli"><a style="color: black" class="nav-link" href="{%  url 'carta' %}"><b>Carta</b></a></li>
+        <li class="baseli"><a style="color: black" class="nav-link" href="{%  url 'ofertas' %}"><b>Ofertas</b></a></li>
+        <li class="baseli"><a style="color: black" class="nav-link" href="{%  url 'vegetal' %}"><b>Vegetal</b></a></li>
+        <li class="baseli"><a style="color: black" class="nav-link" href="{%  url 'about' %}"><b>About</b></a></li>
+        <li style="margin-left : 10%; width: 180px;"><a style=" color: black;" class="nav-link" href="{%  url 'carrito' %}"><b>Carrito</b></a></li>
     </ul>
 </div></br></br></br></br>
 
@@ -28,45 +33,4 @@
   </p>
 </div>
 </body>
-
-<style>
-  body {margin:0;}
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }
-
-  li {
-    float: left;
-  }
-
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  li a:hover:not(.active) {
-    background-color: #111;
-  }
-  .active {
-    background-color: #04AA6D;
-  }
-  .footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: #5a3636;
-   color: white;
-   text-align: center;
-}
-</style>
 </html>

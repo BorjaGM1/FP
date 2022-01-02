@@ -5,20 +5,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'selfservice/cartastyle.css' %}">
 </head>
 <body>
 
 {% block content %}
-    <p>¿QUÉ QUIERES COMER HOY?</p>
-<div style="margin-left: 250px; margin-right: 250px">
+<div class="cartadiv">
+<p class="cartap"><b>¿QUÉ QUIERES COMER HOY?</b></p>
 {% for item in foodlist %}
     {% with 'selfservice/'|add:item.imglink as imgstatic %}
-<div class="gallery">
+<div class="carta">
         <a target="_blank" href="{%  url 'producto' item.id %}">
-            <img src="{% static imgstatic %}" alt="Alitas pollo" width="600" height="400">
+            <img class="cartaitem" src="{% static imgstatic %}" width="600" height="400">
         </a>
-        <div class="desc">{{ item.title }}</div>
+        <div class="cartatext"><b>{{ item.title }}</b></div>
     </div>
     {% endwith %}
 {% endfor %}
