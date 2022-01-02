@@ -1,0 +1,51 @@
+{% extends 'selfservice/plantillabase.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="">
+<head>
+<title>Detailview</title>
+</head>
+<body>
+{% block content %}
+<div style="margin-left: 20%; margin-right: 40%; width: 30%; padding: 10px;">
+
+    {% with 'selfservice/'|add:object.imglink as imgstatic %}
+        <img style="margin: auto; padding: 10px; width: 100%; max-width: 450px; height: auto" src="{% static imgstatic %}" alt="Alitas pollo">
+    {% endwith %}
+    <h1 style="margin: auto; width: 100%; padding: 10px;">{{object.title}} !</h1>
+    <p style="margin: auto; width: 100%; padding: 10px;">{{ object.descripcion }}</p>
+    </br>
+<div style="margin: auto; width: 100%; padding: 10px;">
+<button onclick="" style="margin: auto; width: 100%; padding: 10px; border-radius: 12px; background-color: #ce712e; color: white;">INICIAR PEDIDO</button>
+</div>
+{% endblock %}
+
+</div>
+</body>
+</html>
+
+<body>
+
+
+    <p>¿QUÉ QUIERES COMER HOY?</p>
+<div style="margin-left: 250px; margin-right: 250px">
+{% for item in foodlist %}
+    {% with 'selfservice/'|add:item.imglink as imgstatic %}
+<div class="gallery">
+        <a target="_blank" href="{%  url 'producto' item.id %}">
+            <img src="{% static imgstatic %}" alt="Alitas pollo" width="600" height="400">
+        </a>
+        <div class="desc">{{ item.title }}</div>
+    </div>
+
+    {% endwith %}
+{% endfor %}
+
+</div>
+
+
+
+
+
+</body>
+</html>

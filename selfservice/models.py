@@ -3,8 +3,11 @@ from django.conf import settings
 
 
 class Item(models.Model):
+
     title = models.CharField(max_length=100)
     price = models.FloatField()
+    imglink = models.CharField(max_length=200)
+    descripcion = models.CharField(max_length=400)
 
     def __str__(self):
         return self.title
@@ -17,15 +20,13 @@ class OrderItem(models.Model):
     def __str__(self):
         return self.title
 
-    class Order(models.Model):
-        title = models.CharField(max_length=100)
-        user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-        ordered = models.BooleanField(default=False)
-        start_date = models.DateTimeField(auto_now_add=True)
-        ordered_date = models.DateTimeField()
 
+class Order(models.Model):
+    title = models.CharField(max_length=100)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    ordered = models.BooleanField(default=False)
+    start_date = models.DateTimeField(auto_now_add=True)
+    ordered_date = models.DateTimeField()
 
-        def __str__(self):
-            return self.user.username
-
-
+    def __str__(self):
+        return self.user.username
