@@ -1,13 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 {% extends 'selfservice/plantillabase.html' %}
+{% load static %}
 {% block content %}
-"Sección de carrito"
+    <h1>Shopping cart</h1>
+    <table id="tabla" style="margin-top: 150px; background-color: white; color: black">
+    <tr>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Total</th>
+    </tr>
+    </table>
+    <div ></div>
+    <script>
+    var myTable = document.getElementById("tabla")
+    var tableBody = document.createElement('tbody')
+    myTable.appendChild(tableBody)
+
+    {% for item in foodlist %}
+        var tr = document.createElement('tr')
+        tableBody.appendChild(tr)
+        if ((getCookie('{{ item.id }}')*1)>0) {
+            var q = (getCookie('{{ item.id }}') * 1)
+            var p = (parseInt('{{ item.price }}'))
+            var t = q * p
+
+            var td = document.createElement('td')
+            td.appendChild(document.createTextNode('{{ item.title }}'))
+            tr.appendChild(td)
+
+            var td2 = document.createElement('td')
+            td2.appendChild(document.createTextNode(q.toString()))
+            tr.appendChild(td2)
+
+            var td3 = document.createElement('td')
+            td3.appendChild(document.createTextNode(p.toString()))
+            tr.appendChild(td3)
+
+            var td4 = document.createElement('td')
+            td4.appendChild(document.createTextNode(t.toString()))
+            tr.appendChild(td4)
+        }
+    {% endfor %}
+    </script>
+    <button onclick="" style="margin: auto; width: 100%; padding: 10px; border-radius: 12px; background-color: #ce712e; color: white;">PAGAR</button>
+
+    <style>
+    table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+    </style>
 {% endblock %}
-</body>
-</html>

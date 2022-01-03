@@ -22,11 +22,8 @@ class OrderItem(models.Model):
 
 
 class Order(models.Model):
-    title = models.CharField(max_length=100)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    ordered = models.BooleanField(default=False)
-    start_date = models.DateTimeField(auto_now_add=True)
-    ordered_date = models.DateTimeField()
+    ordered_date = models.DateTimeField(auto_now_add=True)
+    articles = models.ManyToManyField(Item)
 
     def __str__(self):
-        return self.user.username
+        return self.id

@@ -16,7 +16,15 @@
     <p style="margin: auto; width: 100%; padding: 10px;">{{ object.descripcion }}</p>
     </br>
 <div style="margin: auto; width: 100%; padding: 10px;">
-<button onclick="" style="margin: auto; width: 100%; padding: 10px; border-radius: 12px; background-color: #ce712e; color: white;">INICIAR PEDIDO</button>
+<script>
+    function addToCart(itemid){
+        let quantity = getCookie(itemid)*1
+        let num = 1
+        quantity += num
+        setCookie(itemid, quantity)
+    }
+</script>
+<button onclick="addToCart('{{object.id}}')" style="margin: auto; width: 100%; padding: 10px; border-radius: 12px; background-color: #ce712e; color: white;">INICIAR PEDIDO</button>
 </div>
 {% endblock %}
 

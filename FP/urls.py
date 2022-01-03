@@ -22,7 +22,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', selfservice_views.home, name="home"),
+    path('', selfservice_views.index, name="index"),
+    path('home/', selfservice_views.home, name="home"),
     path('about/', selfservice_views.about, name="about"),
     path('carta/', selfservice_views.carta, name="carta"),
     path('ofertas/', selfservice_views.ofertas, name="ofertas"),
@@ -30,7 +31,7 @@ urlpatterns = [
     path('carrito/', selfservice_views.carrito, name="carrito"),
     path('login/', kitchen_views.login, name="login"),
     path('listado/', kitchen_views.listado, name="listado"),
-    path('producto/<int:pk>/', selfservice_views.ProductView.as_view(), name='producto')
+    path('producto/<int:pk>/', selfservice_views.ProductView.as_view(), name='producto'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

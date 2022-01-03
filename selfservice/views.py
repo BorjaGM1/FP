@@ -1,7 +1,10 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from .models import Item
-from django.conf.urls.static import static
 from django.views import generic
+
+
+def index(request):
+    return render(request, "selfservice/index.html")
 
 
 def home(request):
@@ -39,7 +42,8 @@ def vegetal(request):
 
 
 def carrito(request):
-    return render(request, "selfservice/carrito.html")
+    foodlist = Item.objects.all()
+    return render(request, "selfservice/carrito.html", {'foodlist': foodlist})
 
 
 def allfood(request):
@@ -58,3 +62,7 @@ class ProductView(generic.DetailView):
     model = Item
     context_object_name = 'product'
     template_name = 'selfservice/producto.html'
+
+
+def payment(request):
+    form = ItemCreate
