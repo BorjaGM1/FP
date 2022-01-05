@@ -12,6 +12,9 @@
     </table>
     <div ></div>
     <script>
+        {% for item in foodlist %}
+    var ordered = Boolean((getCookie('{{ item.id }}')*1)>0)
+        {% endfor %}
     var myTable = document.getElementById("tabla")
     var tableBody = document.createElement('tbody')
     myTable.appendChild(tableBody)
@@ -42,8 +45,38 @@
         }
     {% endfor %}
     </script>
-    <button onclick="" style="margin: auto; width: 100%; padding: 10px; border-radius: 12px; background-color: #ce712e; color: white;">PAGAR</button>
+    <script>
+    function getjson(){
+        var cart = {}
+        {% for item in foodlist %}
+            if ((getCookie('{{ item.id }}')*1)>0){
+            cart[{{ item.id }}] = getCookie({{ item.id }})
+            }
+        {% endfor %}
+    console.log(cart)
+    let url = '{% url 'enjoy' %}'
+    let configFetch	=	{
+        method:	"POST",
+        headers:	{	'Content-Type':	'application/json' },
+        body: JSON.stringify(cart),
+        redirect: 'follow'
+  }
+  console.log(JSON.stringify(cart))
+  fetch(url, configFetch)
+    .then(() => {
+        var cookies = document.cookie.split(";");
 
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;";
+        location.href = "{%  url 'enjoy2' %}"
+    }
+    })
+    }
+    </script>
+    <button onclick="getjson()" style="margin: auto; width: 100%; padding: 10px; border-radius: 12px; background-color: #ce712e; color: white;">PAGAR</button>
     <style>
     table {
   font-family: arial, sans-serif;

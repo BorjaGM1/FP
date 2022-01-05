@@ -1,7 +1,14 @@
+from django.db.models.fields import json
+from django.core.serializers import json
+import json
+from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Item
+from .models import *
 from django.views import generic
-
+from django.views.decorators.csrf import csrf_exempt
+import re
+from django.shortcuts import redirect
 
 def index(request):
     return render(request, "selfservice/index.html")
@@ -64,5 +71,20 @@ class ProductView(generic.DetailView):
     template_name = 'selfservice/producto.html'
 
 
-def payment(request):
-    form = ItemCreate
+@csrf_exempt
+def createorder(request):
+    cartitems = request.body
+    cartitems = json.loads(cartitems)
+    print(cartitems)
+    # acartitems = json.load(data)
+    neworder = Order.objects.create()
+    neworder.save()
+    for product, value in cartitems.items():
+        newitem = OrderItem.objects.create(quantity=value, item_id=product, order_id=neworder.id)
+        newitem.save()
+
+    return render(request, redirect("selfservice/enjoy.html"))
+
+
+def enjoy2(request):
+    return render(request, "selfservice/enjoy2.html")
