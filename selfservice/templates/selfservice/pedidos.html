@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+<body>
+{% for order in order %}
+    <p>Id: {{ order.id }}  Fecha: {{ order.ordered_date }}</p>
+    <ul>
+    {% for item in productos %}
+        {% if item.order_id == order.pk %}
+            <li>Name: {{ item.get_title }}</li>
+            <li>Price: {{ item.get_price }}</li>
+            <li>Quantity: {{ item.quantity }}</li>
+            <li>Total: {{ item.get_total }}</li><br>
+        {% endif %}
+    {% endfor %}
+    </ul>
+    <p>Total pedido: {{ order.get_cart_total }}</p><br>
+{% endfor %}
+</body>
+</html>
+

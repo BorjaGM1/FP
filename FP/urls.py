@@ -34,6 +34,8 @@ urlpatterns = [
     path('producto/<int:pk>/', selfservice_views.ProductView.as_view(), name='producto'),
     path('enjoy/', selfservice_views.createorder, name="enjoy"),
     path('enjoy2/', selfservice_views.enjoy2, name="enjoy2"),
+    path('shouldlogin/pedidos/', selfservice_views.cocina, name="cocina"),
+    path('shouldlogin/pedidos/', selfservice_views.cocina, name="cocina"),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

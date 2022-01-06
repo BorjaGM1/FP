@@ -10,6 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 import re
 from django.shortcuts import redirect
 
+
 def index(request):
     return render(request, "selfservice/index.html")
 
@@ -88,3 +89,8 @@ def createorder(request):
 
 def enjoy2(request):
     return render(request, "selfservice/enjoy2.html")
+
+
+def cocina(request):
+    return render(request, "selfservice/pedidos.html",
+                  {'productos': OrderItem.objects.all(), 'order': Order.objects.all()})
