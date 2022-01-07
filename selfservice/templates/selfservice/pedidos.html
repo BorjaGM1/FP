@@ -4,22 +4,49 @@
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
+    <style>
+        table, th, td {
+            border: 1px solid black
+        }
+    </style>
 </head>
 <body>
+
 {% for order in order %}
-    <p>Id: {{ order.id }}  Fecha: {{ order.ordered_date }}</p>
-    <ul>
+    {% if order.status == 'P' %}
+    <table>
+        <caption style="border: 1px solid black"><strong>Id: {{ order.id }} Fecha: {{ order.ordered_date }}</strong></caption>
+    <thead>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Total</th>
+    </thead>
+    <tbody>
     {% for item in productos %}
+        <tr>
         {% if item.order_id == order.pk %}
-            <li>Name: {{ item.get_title }}</li>
-            <li>Price: {{ item.get_price }}</li>
-            <li>Quantity: {{ item.quantity }}</li>
-            <li>Total: {{ item.get_total }}</li><br>
+            <td>{{ item.get_title }}</td>
+            <td>{{ item.get_price }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.get_total }}</td>
         {% endif %}
+        </tr>
     {% endfor %}
-    </ul>
-    <p>Total pedido: {{ order.get_cart_total }}</p><br>
+    </tbody>
+        <tr><td>Total pedido: {{ order.get_cart_total }}</td></tr>
+    <a href="{% url 'updatedone' order.pk %}">
+        <button>
+            Done
+        </button>
+    </a>
+    </table>
+
+    {% endif %}
 {% endfor %}
+<script>
+
+</script>
 </body>
 </html>
 

@@ -15,9 +15,17 @@ class Item(models.Model):
 
 class Order(models.Model):
     ordered_date = models.DateTimeField(auto_now_add=True)
+    STATUS_CHOICES = (
+        ('D', 'Done'),
+        ('P', 'Procesando'),
+    )
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='P')
 
     def __str__(self):
         return str(self.id)
+
+    def set_status_done(self):
+        self.status = 'D'
 
     @property
     def get_cart_total(self):
@@ -59,3 +67,4 @@ class OrderItem(models.Model):
     def get_total(self):
         total = self.item.price * self.quantity
         return total
+

@@ -2,13 +2,16 @@ from django.db.models.fields import json
 from django.core.serializers import json
 import json
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.utils.decorators import method_decorator
+
 from .models import Item
 from .models import *
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
 import re
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
 
 
 def index(request):
@@ -73,6 +76,15 @@ class ProductView(generic.DetailView):
 
 
 @csrf_exempt
+def updatedone(request, *args, **kwargs):
+    pk = kwargs.get('pk')
+    up = get_object_or_404(Order, pk=pk)
+    up.status = 'D'
+    up.save()
+    return cocina(request)
+
+
+@csrf_exempt
 def createorder(request):
     cartitems = request.body
     cartitems = json.loads(cartitems)
@@ -94,3 +106,4 @@ def enjoy2(request):
 def cocina(request):
     return render(request, "selfservice/pedidos.html",
                   {'productos': OrderItem.objects.all(), 'order': Order.objects.all()})
+

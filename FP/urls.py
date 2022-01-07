@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
+from django.template.defaulttags import url
 from django.urls import path
 from selfservice import views as selfservice_views
 from kitchen import views as kitchen_views
@@ -35,7 +36,7 @@ urlpatterns = [
     path('enjoy/', selfservice_views.createorder, name="enjoy"),
     path('enjoy2/', selfservice_views.enjoy2, name="enjoy2"),
     path('shouldlogin/pedidos/', selfservice_views.cocina, name="cocina"),
-    path('shouldlogin/pedidos/', selfservice_views.cocina, name="cocina"),
+    path('updateorder/<int:pk>/', selfservice_views.updatedone, name="updatedone")
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
